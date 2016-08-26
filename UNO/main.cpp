@@ -12,6 +12,8 @@ https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.
 #define CINTERFACE
 #endif
 #include <DxLib.h>
+
+
 int WINAPI _tWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPTSTR /*lpCmdLine*/, int /*nCmdShow*/)
 {
 	DxLib::SetOutApplicationLogValidFlag(FALSE);
@@ -21,9 +23,30 @@ int WINAPI _tWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPTST
 	if (DxLib::DxLib_Init() == -1)return -1;// エラーが起きたら直ちに終了
 	DxLib::SetDrawScreen(DX_SCREEN_BACK);
 	DxLib::ClearDrawScreen();
-	while (DxLib::ProcessMessage() == 0 && DxLib::CheckHitKeyAll() == 0 && DxLib::GetMouseWheelRotVol() == 0 && DxLib::GetMouseInput() == 0) {
+	static const auto gray = DxLib::GetColor(128, 128, 128);
+	int old_mouse_x, old_mouse_y;
+	GetMousePoint(&old_mouse_x, &old_mouse_y);
+	int box_lx = 2, box_ly = 2, box_rx = 40, box_ry = 40;
+	bool on_mouse_drag = false;
+	while (DxLib::ProcessMessage() == 0 && DxLib::CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
 		ClearDrawScreen();
-		DxLib::DrawBox(2, 2, 40, 40, DxLib::GetColor(128, 128, 128), true);
+		DxLib::DrawBox(box_lx, box_ly, box_rx, box_ry, gray, true);
+		int mouse_x, mouse_y;
+		GetMousePoint(&mouse_x, &mouse_y);
+		if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0) {
+			if (mouse_x > box_lx && mouse_x < box_rx && mouse_y > box_ly && mouse_y < box_ry) on_mouse_drag = true;
+		}
+		else {
+			on_mouse_drag = false;
+		}
+		if (on_mouse_drag) {
+			box_lx += mouse_x - old_mouse_x;
+			box_ly += mouse_y - old_mouse_y;
+			box_rx += mouse_x - old_mouse_x;
+			box_ry += mouse_y - old_mouse_y;
+		}
+		old_mouse_x = mouse_x;
+		old_mouse_y = mouse_y;
 		::Sleep(20);//Win32API
 		DxLib::ScreenFlip();
 	}
