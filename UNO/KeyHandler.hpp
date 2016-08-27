@@ -89,6 +89,66 @@ public:
 	bool space() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_SPACE];
 	}
+	bool back() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_BACK];
+	}
+	bool tab() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_TAB];
+	}
+	bool pgup() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_PGUP];
+	}
+	bool pgdn() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_PGDN];
+	}
+	bool end() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_END];
+	}
+	bool home() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_HOME];
+	}
+	bool insert() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_INSERT];
+	}
+	bool delete() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_DELETE];
+	}
+	bool f1() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F1];
+	}
+	bool f2() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F2];
+	}
+	bool f3() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F3];
+	}
+	bool f4() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F4];
+	}
+	bool f5() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F5];
+	}
+	bool f6() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F6];
+	}
+	bool f7() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F7];
+	}
+	bool f8() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F8];
+	}
+	bool f9() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F9];
+	}
+	bool f10() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F10];
+	}
+	bool f11() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F11];
+	}
+	bool f12() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_F12];
+	}
 	static constexpr size_t keybufsize = 256;
 private:
 	bool fllush_stream() {
