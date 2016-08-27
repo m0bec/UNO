@@ -18,6 +18,8 @@ https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.
 #include "DxLib.h"
 #include <limits>
 #include <array>
+#include <vector>
+#include <functional>
 class key_handler_c
 {
 public:
@@ -103,7 +105,8 @@ private:
 		}
 		return false;
 	}
-	std::array<int, 256> key_handler_cbuf;
+	std::array<int, keybufsize> key_handler_cbuf;
+	std::array<std::vector<std::function<void()>>, keybufsize> registered_functions;
 };
 inline bool operator!=(const key_handler_c& l, size_t r) {
 	return 0 == l[r];
