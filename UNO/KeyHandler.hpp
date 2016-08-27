@@ -1,7 +1,7 @@
 ﻿/*
 Copyright © 2016 m0bec
 Copyright © 2016 yumetodo
-Copyright © 2016 kagucho_kamioda
+Copyright © 2016 kamioda
 Copyright © 2016 makuragi
 Released under the MIT license
 https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.txt
@@ -50,17 +50,11 @@ public:
 	int at(size_t n) const {
 		return this->key_handler_cbuf.at(n);
 	}
-	bool shift() const noexcept {
-		return this->lshift() || this->rshift();
-	}
 	bool lshift() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_LSHIFT];
 	}
 	bool rshift() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_RSHIFT];
-	}
-	bool ctrl() const noexcept {
-		return this->lctrl() || this->rctrl();
 	}
 	bool lctrl() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_LCONTROL];
@@ -83,7 +77,7 @@ public:
 	bool down() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_DOWN];
 	}
-	bool enter() const noexcept {
+	bool default_enter() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_RETURN];
 	}
 	bool space() const noexcept {
@@ -95,10 +89,10 @@ public:
 	bool tab() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_TAB];
 	}
-	bool pgup() const noexcept {
+	bool page_up() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_PGUP];
 	}
-	bool pgdn() const noexcept {
+	bool page_down() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_PGDN];
 	}
 	bool end() const noexcept {
@@ -227,109 +221,49 @@ public:
 	bool z() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_Z];
 	}
-	bool top_zero() const noexcept {
+	bool default_0() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_0];
 	}
-	bool top_one() const noexcept {
+	bool default_1() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_1];
 	}
-	bool top_two() const noexcept {
+	bool default_2() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_2];
 	}
-	bool top_three() const noexcept {
+	bool default_3() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_3];
 	}
-	bool top_four() const noexcept {
+	bool default_4() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_4];
 	}
-	bool top_five() const noexcept {
+	bool default_5() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_5];
 	}
-	bool top_six() const noexcept {
+	bool default_6() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_6];
 	}
-	bool top_seven() const noexcept {
+	bool default_7() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_7];
 	}
-	bool top_eight() const noexcept {
+	bool default_8() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_8];
 	}
-	bool top_nine() const noexcept {
+	bool default_9() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_9];
 	}
-	bool numpad_zero() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD0];
-	}
-	bool numpad_one() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD1];
-	}
-	bool numpad_two() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD2];
-	}
-	bool numpad_three() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD3];
-	}
-	bool numpad_four() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD4];
-	}
-	bool numpad_five() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD5];
-	}
-	bool numpad_six() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD6];
-	}
-	bool numpad_seven() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD7];
-	}
-	bool numpad_eight() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD8];
-	}
-	bool numpad_nine() const noexcept {
-		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD9];
-	}
-	bool zero() const noexcept {
-		return this->top_zero() || this->numpad_zero();
-	}
-	bool one() const noexcept {
-		return this->top_one() || this->numpad_one();
-	}
-	bool two() const noexcept {
-		return this->top_two() || this->numpad_two();
-	}
-	bool three() const noexcept {
-		return this->top_three() || this->numpad_three();
-	}
-	bool four() const noexcept {
-		return this->top_four() || this->numpad_four();
-	}
-	bool five() const noexcept {
-		return this->top_five() || this->numpad_five();
-	}
-	bool six() const noexcept {
-		return this->top_six() || this->numpad_six();
-	}
-	bool seven() const noexcept {
-		return this->top_seven() || this->numpad_seven();
-	}
-	bool eight() const noexcept {
-		return this->top_eight() || this->numpad_eight();
-	}
-	bool nine() const noexcept {
-		return this->top_nine() || this->numpad_nine();
-	}
-	bool minus() const noexcept {
+	bool default_minus() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_MINUS];
 	}
 	bool yen() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_YEN];
 	}
-	bool prevtrack() const noexcept {
+	bool hat_mark() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_PREVTRACK];
 	}
-	bool period() const noexcept {
+	bool default_period() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_PERIOD];
 	}
-	bool slash() const noexcept {
+	bool default_slash() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_SLASH];
 	}
 	bool lalt() const noexcept {
@@ -338,7 +272,7 @@ public:
 	bool ralt() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_RALT];
 	}
-	bool scroll() const noexcept {
+	bool scroll_lock() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_SCROLL];
 	}
 	bool semicolon() const noexcept {
@@ -377,13 +311,13 @@ public:
 	bool apps() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_APPS];
 	}
-	bool capslock() const noexcept {
+	bool caps_lock() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_CAPSLOCK];
 	}
-	bool sysrq() const noexcept {
+	bool print_screen() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_SYSRQ];
 	}
-	bool pause() const noexcept {
+	bool pause_break() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_PAUSE];
 	}
 	bool lwin() const noexcept {
@@ -392,26 +326,118 @@ public:
 	bool rwin() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_RWIN];
 	}
+
+	bool numpad_0() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD0];
+	}
+	bool numpad_1() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD1];
+	}
+	bool numpad_2() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD2];
+	}
+	bool numpad_3() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD3];
+	}
+	bool numpad_4() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD4];
+	}
+	bool numpad_5() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD5];
+	}
+	bool numpad_6() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD6];
+	}
+	bool numpad_7() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD7];
+	}
+	bool numpad_8() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD8];
+	}
+	bool numpad_9() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPAD9];
+	}
 	bool numlock() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMLOCK];
 	}
-	bool multiply() const noexcept {
+	bool numpad_asterisk() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_MULTIPLY];
 	}
-	bool add() const noexcept {
+	bool numpad_plus() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_ADD];
 	}
-	bool subtract() const noexcept {
+	bool numpad_minus() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_SUBTRACT];
 	}
-	bool decimal() const noexcept {
+	bool numpad_period() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_DECIMAL];
 	}
-	bool divide() const noexcept {
+	bool numpad_slash() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_DIVIDE];
 	}
-	bool numpadenter() const noexcept {
+	bool numpad_enter() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPADENTER];
+	}
+
+	bool n_0() const noexcept {
+		return this->default_0() || this->numpad_0();
+	}
+	bool n_1() const noexcept {
+		return this->default_1() || this->numpad_1();
+	}
+	bool n_2() const noexcept {
+		return this->default_2() || this->numpad_2();
+	}
+	bool n_3() const noexcept {
+		return this->default_3() || this->numpad_3();
+	}
+	bool n_4() const noexcept {
+		return this->default_4() || this->numpad_4();
+	}
+	bool n_5() const noexcept {
+		return this->default_5() || this->numpad_5();
+	}
+	bool n_6() const noexcept {
+		return this->default_6() || this->numpad_6();
+	}
+	bool n_7() const noexcept {
+		return this->default_7() || this->numpad_7();
+	}
+	bool n_8() const noexcept {
+		return this->default_8() || this->numpad_8();
+	}
+	bool n_9() const noexcept {
+		return this->default_9() || this->numpad_9();
+	}
+	bool ctrl() const noexcept {
+		return this->lctrl() || this->rctrl();
+	}
+	bool shift() const noexcept {
+		return this->lshift() || this->rshift();
+	}
+	bool alt() const noexcept {
+		return this->lalt() || this->ralt();
+	}
+	bool win() const noexcept {
+		return this->lwin() || this->rwin();
+	}
+	bool plus() const noexcept {
+		return this->semicolon() || this->numpad_plus();
+	}
+	bool minus() const noexcept {
+		return this->default_minus() || this->numpad_minus();
+	}
+	bool asterisk() const noexcept {
+		return this->colon() || this->numpad_asterisk();
+	}
+	bool period() const noexcept {
+		return this->default_period() || this->numpad_period();
+	}
+	bool slash() const noexcept {
+		return this->default_slash() || this->numpad_slash();
+	}
+	bool enter() const noexcept {
+		return this->default_enter() || this->numpad_enter();
 	}
 	static constexpr size_t keybufsize = 256;
 private:
