@@ -110,7 +110,7 @@ public:
 	bool insert() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_INSERT];
 	}
-	bool delete() const noexcept {
+	bool del() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_DELETE];
 	}
 	bool f1() const noexcept {
@@ -353,7 +353,7 @@ public:
 	bool rbracket() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_RBRACKET];
 	}
-	bool at() const noexcept {
+	bool atmark() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_AT];
 	}
 	bool backslash() const noexcept {
