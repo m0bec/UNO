@@ -89,6 +89,102 @@ public:
 	bool space() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_SPACE];
 	}
+	bool minus() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_MINUS];
+	}
+	bool yen() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_YEN];
+	}
+	bool prevtrack() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_PREVTRACK];
+	}
+	bool period() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_PERIOD];
+	}
+	bool slash() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_SLASH];
+	}
+	bool lalt() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_LALT];
+	}
+	bool ralt() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_RALT];
+	}
+	bool scroll() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_SCROLL];
+	}
+	bool semicolon() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_SEMICOLON];
+	}
+	bool colon() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_COLON];
+	}
+	bool lbracket() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_LBRACKET];
+	}
+	bool rbracket() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_RBRACKET];
+	}
+	bool at() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_AT];
+	}
+	bool backslash() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_BACKSLASH];
+	}
+	bool comma() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_COMMA];
+	}
+	bool kanji() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_KANJI];
+	}
+	bool convert() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_CONVERT];
+	}
+	bool noconvert() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NOCONVERT];
+	}
+	bool kana() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_KANA];
+	}
+	bool apps() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_APPS];
+	}
+	bool capslock() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_CAPSLOCK];
+	}
+	bool sysrq() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_SYSRQ];
+	}
+	bool pause() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_PAUSE];
+	}
+	bool lwin() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_LWIN];
+	}
+	bool rwin() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_RWIN];
+	}
+	bool numlock() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMLOCK];
+	}
+	bool multiply() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_MULTIPLY];
+	}
+	bool add() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_ADD];
+	}
+	bool subtract() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_SUBTRACT];
+	}
+	bool decimal() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_DECIMAL];
+	}
+	bool divide() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_DIVIDE];
+	}
+	bool numpadenter() const noexcept {
+		return 0 != this->key_handler_cbuf[KEY_INPUT_NUMPADENTER];
+	}
 	static constexpr size_t keybufsize = 256;
 private:
 	bool fllush_stream() {
