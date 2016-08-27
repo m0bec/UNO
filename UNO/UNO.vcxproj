@@ -117,7 +117,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -134,7 +134,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -153,7 +153,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -174,7 +174,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -190,7 +190,7 @@
       <AdditionalLibraryDirectories>$(DXLIB_ROOT);</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <DebugInformationFormat>FullDebug</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <AdditionalOptions>-Wextra %(AdditionalOptions)</AdditionalOptions>
@@ -203,7 +203,7 @@
       <AdditionalLibraryDirectories>$(DXLIB_ROOT);</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <DebugInformationFormat>FullDebug</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <AdditionalOptions>-Wextra %(AdditionalOptions)</AdditionalOptions>
@@ -213,7 +213,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='clang_Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>-Wextra %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -224,7 +224,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='clang_Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(DXLIB_ROOT);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXLIB_ROOT);$(DXLIBEX_ROOT);</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>-Wextra %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -238,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KeyHandler.hpp" />
+    <ClInclude Include="MouseEventHandler.hpp" />
     <ClInclude Include="no_min_max.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

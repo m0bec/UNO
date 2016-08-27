@@ -14,6 +14,7 @@ https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.
 #endif
 #include <DxLib.h>
 #include "KeyHandler.hpp"
+#include "MouseEventHandler.hpp"
 
 
 int WINAPI _tWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPTSTR /*lpCmdLine*/, int /*nCmdShow*/)
