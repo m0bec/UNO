@@ -160,7 +160,11 @@ public:
 	template<typename Function>
 	auto register_handler(key k, Function&& f) -> decltype(f(), std::size_t{}) {
 		registered_functions[static_cast<int>(k)].push_back(std::forward<Function>(f));
-		return registered_functions[static_cast<int>(k)].size();
+		return registered_functions[static_cast<int>(k)].size()-1;
+	}
+	void remove_handler(key k, std::size_t handle_number) {
+		auto& arr = registered_functions[static_cast<int>(k)];
+		arr.erase(arr.begin()+handle_number);
 	}
 	bool fllush() {
 		if (this->fllush_stream()) return false;
