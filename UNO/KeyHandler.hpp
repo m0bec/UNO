@@ -158,7 +158,7 @@ public:
 		return true;
 	}
 	template<typename Function>
-	std::size_t register_handler(key k, Function&& f) {
+	auto register_handler(key k, Function&& f) -> decltype(f(), std::size_t{}) {
 		registered_functions[static_cast<int>(k)].push_back(std::forward<Function>(f));
 		return registered_functions[static_cast<int>(k)].size();
 	}
