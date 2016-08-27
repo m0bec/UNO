@@ -13,6 +13,7 @@ https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.
 #define CINTERFACE
 #endif
 #include <DxLib.h>
+#include "KeyHandler.hpp"
 
 
 int WINAPI _tWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPTSTR /*lpCmdLine*/, int /*nCmdShow*/)
