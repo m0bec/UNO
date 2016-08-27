@@ -20,6 +20,118 @@ https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.
 #include <array>
 #include <vector>
 #include <functional>
+namespace uno {
+enum class key : int {
+	lshift = KEY_INPUT_LSHIFT,
+	rshift = KEY_INPUT_RSHIFT,
+	lctrl = KEY_INPUT_LCONTROL,
+	rctrl = KEY_INPUT_RCONTROL,
+	esc = KEY_INPUT_ESCAPE,
+	right = KEY_INPUT_RIGHT,
+	up = KEY_INPUT_UP,
+	left = KEY_INPUT_LEFT,
+	down = KEY_INPUT_DOWN,
+	enter = KEY_INPUT_RETURN,
+	space = KEY_INPUT_SPACE,
+	back = KEY_INPUT_BACK,
+	tab = KEY_INPUT_TAB,
+	pgup = KEY_INPUT_PGUP,
+	pgdn = KEY_INPUT_PGDN,
+	end = KEY_INPUT_END,
+	home = KEY_INPUT_HOME,
+	insert = KEY_INPUT_INSERT,
+	del = KEY_INPUT_DELETE,
+	f1 = KEY_INPUT_F1,
+	f2 = KEY_INPUT_F2,
+	f3 = KEY_INPUT_F3,
+	f4 = KEY_INPUT_F4,
+	f5 = KEY_INPUT_F5,
+	f6 = KEY_INPUT_F6,
+	f7 = KEY_INPUT_F7,
+	f8 = KEY_INPUT_F8,
+	f9 = KEY_INPUT_F9,
+	f10 = KEY_INPUT_F10,
+	f11 = KEY_INPUT_F11,
+	f12 = KEY_INPUT_F12,
+	a = KEY_INPUT_A,
+	b = KEY_INPUT_B,
+	c = KEY_INPUT_C,
+	d = KEY_INPUT_D,
+	e = KEY_INPUT_E,
+	f = KEY_INPUT_F,
+	g = KEY_INPUT_G,
+	h = KEY_INPUT_H,
+	i = KEY_INPUT_I,
+	j = KEY_INPUT_J,
+	k = KEY_INPUT_K,
+	l = KEY_INPUT_L,
+	m = KEY_INPUT_M,
+	n = KEY_INPUT_N,
+	o = KEY_INPUT_O,
+	p = KEY_INPUT_P,
+	q = KEY_INPUT_Q,
+	r = KEY_INPUT_R,
+	s = KEY_INPUT_S,
+	t = KEY_INPUT_T,
+	u = KEY_INPUT_U,
+	v = KEY_INPUT_V,
+	w = KEY_INPUT_W,
+	x = KEY_INPUT_X,
+	y = KEY_INPUT_Y,
+	z = KEY_INPUT_Z,
+	top_zero = KEY_INPUT_0,
+	top_one = KEY_INPUT_1,
+	top_two = KEY_INPUT_2,
+	top_three = KEY_INPUT_3,
+	top_four = KEY_INPUT_4,
+	top_five = KEY_INPUT_5,
+	top_six = KEY_INPUT_6,
+	top_seven = KEY_INPUT_7,
+	top_eight = KEY_INPUT_8,
+	top_nine = KEY_INPUT_9,
+	numpad_zero = KEY_INPUT_NUMPAD0,
+	numpad_one = KEY_INPUT_NUMPAD1,
+	numpad_two = KEY_INPUT_NUMPAD2,
+	numpad_three = KEY_INPUT_NUMPAD3,
+	numpad_four = KEY_INPUT_NUMPAD4,
+	numpad_five = KEY_INPUT_NUMPAD5,
+	numpad_six = KEY_INPUT_NUMPAD6,
+	numpad_seven = KEY_INPUT_NUMPAD7,
+	numpad_eight = KEY_INPUT_NUMPAD8,
+	numpad_nine = KEY_INPUT_NUMPAD9,
+	minus = KEY_INPUT_MINUS,
+	yen = KEY_INPUT_YEN,
+	prevtrack = KEY_INPUT_PREVTRACK,
+	period = KEY_INPUT_PERIOD,
+	slash = KEY_INPUT_SLASH,
+	lalt = KEY_INPUT_LALT,
+	ralt = KEY_INPUT_RALT,
+	scroll = KEY_INPUT_SCROLL,
+	semicolon = KEY_INPUT_SEMICOLON,
+	colon = KEY_INPUT_COLON,
+	lbracket = KEY_INPUT_LBRACKET,
+	rbracket = KEY_INPUT_RBRACKET,
+	atmark = KEY_INPUT_AT,
+	backslash = KEY_INPUT_BACKSLASH,
+	comma = KEY_INPUT_COMMA,
+	kanji = KEY_INPUT_KANJI,
+	convert = KEY_INPUT_CONVERT,
+	noconvert = KEY_INPUT_NOCONVERT,
+	kana = KEY_INPUT_KANA,
+	apps = KEY_INPUT_APPS,
+	capslock = KEY_INPUT_CAPSLOCK,
+	sysrq = KEY_INPUT_SYSRQ,
+	pause = KEY_INPUT_PAUSE,
+	lwin = KEY_INPUT_LWIN,
+	rwin = KEY_INPUT_RWIN,
+	numlock = KEY_INPUT_NUMLOCK,
+	multiply = KEY_INPUT_MULTIPLY,
+	add = KEY_INPUT_ADD,
+	subtract = KEY_INPUT_SUBTRACT,
+	decimal = KEY_INPUT_DECIMAL,
+	divide = KEY_INPUT_DIVIDE,
+	numpadenter = KEY_INPUT_NUMPADENTER
+};
 class key_handler_c
 {
 public:
@@ -38,7 +150,17 @@ public:
 			if (buf[i] && std::numeric_limits<int>::max() != this->key_handler_cbuf[i])++this->key_handler_cbuf[i];
 			else this->key_handler_cbuf[i] = 0;
 		}
+		for (std::size_t i = 0; i < keybufsize; ++i) {
+			if (buf[i]) {
+				for (auto&& f : registered_functions[i]) f();
+			}
+		}
 		return true;
+	}
+	template<typename Function>
+	std::size_t register_handler(key k, Function&& f) {
+		registered_functions[static_cast<int>(k)].push_back(std::forward<Function>(f));
+		return registered_functions[static_cast<int>(k)].size();
 	}
 	bool fllush() {
 		if (this->fllush_stream()) return false;
@@ -171,7 +293,7 @@ public:
 	}
 	bool g() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_G];
-	}	
+	}
 	bool h() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_H];
 	}
@@ -417,6 +539,7 @@ public:
 	}
 	static constexpr size_t keybufsize = 256;
 private:
+		
 	bool fllush_stream() {
 		char buf[2][keybufsize] = {};
 		for (size_t i = 0; i < this->key_handler_cbuf.size(); ++i) buf[0][i] = 0 != this->key_handler_cbuf[i];
@@ -429,7 +552,9 @@ private:
 		}
 		return false;
 	}
+
 	std::array<int, keybufsize> key_handler_cbuf;
+
 	std::array<std::vector<std::function<void()>>, keybufsize> registered_functions;
 };
 inline bool operator!=(const key_handler_c& l, size_t r) {
@@ -444,5 +569,6 @@ inline bool operator==(const key_handler_c& l, size_t r) {
 }
 inline bool operator==(size_t l, const key_handler_c& r) {
 	return !(l != r);
+}
 }
 #endif //UNO_INC_KEYHANDLER_HPP_
