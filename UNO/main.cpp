@@ -2,6 +2,7 @@
 Copyright © 2016 m0bec
 Copyright © 2016 yumetodo
 Copyright © 2016 kagucho_kamioda
+Copyright © 2016 makuragi
 Released under the MIT license
 https://github.com/YukinobuKurata/YouTubeMagicBuyButton/blob/master/MIT-LICENSE.txt
 */
