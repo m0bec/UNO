@@ -134,7 +134,7 @@ public:
 	bool f9() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_F9];
 	}
-	bool f10() const noexcept {
+	[[deprecated("F10 unfocus window so that this function is deprecated.")]] bool f10() const noexcept {
 		return 0 != this->key_handler_cbuf[KEY_INPUT_F10];
 	}
 	bool f11() const noexcept {
